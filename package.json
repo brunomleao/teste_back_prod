@@ -1,0 +1,39 @@
+{
+  "name": "atech-api",
+  "version": "1.0.0",
+  "description": "Final project: IoT device - first year, fourth project [4Q2022]",
+  "main": "server.js",
+  "scripts": {
+    "start:dev": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/2022M4T3-Inteli/Projeto3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2022M4T3-Inteli/Projeto3/issues"
+  },
+  "homepage": "https://github.com/2022M4T3-Inteli/Projeto3#readme",
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.2",
+    "morgan": "^1.10.0"
+  }
+}
