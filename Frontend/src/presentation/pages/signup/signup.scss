@@ -1,0 +1,50 @@
+#signup .title {
+  margin-bottom: 4px;
+}
+
+#signup .row {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+#signup .ant-form-item {
+  max-width: 100%;
+  margin: 16px 0;
+}
+
+#signup .ant-form-item:last-child {
+  margin-bottom: 0;
+}
+
+#signup .ant-input-affix-wrapper {
+  padding: 0 11px;
+}
+
+#signup input {
+  height: 40px;
+}
+
+#signup .button {
+  margin-top: 16px;
+  // margin-left: 10%;
+  width: 100%;
+  height: 40px;
+  background-color: #29292D;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#signup .acess {
+  position: absolute  ;
+  right: 20px;
+  bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #29292D;
+}
+
+#signup .acess:hover {
+  text-decoration: underline;
+}

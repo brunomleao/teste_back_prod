@@ -1,0 +1,94 @@
+#tags-list {
+  width: 100%;
+  height: 100%;
+}
+
+#tags-list .table {
+  border-radius: 9px;
+}
+
+// #tags-list .table .ant-table {
+//   border: 1px solid #d9d9d9;
+//   border-radius: 9px;
+// }
+
+#tags-list .ant-table table {
+  border: 1px solid #d9d9d9;
+  border-radius: 9px;
+}
+
+#tags-list .ant-table thead tr:first-child th:first-child {
+  border-radius: 9px 0 0 0;
+  border: 0px;
+}
+
+#tags-list .ant-table thead tr:first-child th:last-child {
+  border-radius: 0 9px 0 0;
+  border-top: 0px solid #d9d9d9;
+  border-left: 0px solid #d9d9d9;
+}
+
+#tags-list .ant-table tbody tr:last-child td {
+  border-bottom: 0px;
+}
+
+#tags-list .buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+#tags-list .buttonContainer button {
+  border: 1px solid #d9d9d9;
+}
+
+.ant-modal-confirm-btns button:hover:not(.ant-btn-dangerous){
+  border: solid 1px #CCFE00 !important;
+  color: #CCFE00 !important;
+}
+
+#tags-list .buttonContainer .icon {
+  margin-right: 8px;
+}
+
+#tags-list .buttonContainer .icon:hover {
+  color: #CCFE00;
+  cursor: pointer;
+}
+
+#tags-list .buttonContainer .ant-popover-open {
+  color: #CCFE00;
+}
+
+#tags-list .buttonContainer button:hover {
+  border: solid 1px #CCFE00;
+  color: #CCFE00;
+}
+
+#tags-list .table .icon {
+  display: flex;
+  top: 10%;
+  left: 14px;
+  position: absolute;
+  font-size: 50px;
+  transform: rotate(90deg);
+  // color: #29292D;
+  color: #29292D;
+  font-weight: bold;
+}
+
+#tags-list .table .low {
+  color: #e50000;
+}
+
+#tags-list .table .actionIcon {
+  color: #29292D;
+  cursor: pointer;
+}
+
+
+#tags-list .table .actionIcon:hover {
+  color: #CCFE00;
+}

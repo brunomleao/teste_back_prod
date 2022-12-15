@@ -1,0 +1,28 @@
+#acess {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#acess .banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  background-color: #29292D;
+}
+
+#acess .banner img {
+  max-width: 600px;
+}
+
+#acess #login, #signup, #aproval {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
