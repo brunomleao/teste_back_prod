@@ -1,5 +1,7 @@
 const { CustomError, asyncHandler } = require("../utils/lib");
+const { Triangulation } = require("./../utils/triangulation");
 const Tag = require("./../models/tagModel");
+const Beacon = require("./../models/beaconModel");
 ////////////////////////////////////////////////////////////////////////////////////
 
 /**
@@ -19,7 +21,31 @@ exports.getAllTags = asyncHandler(async function (req, res, next) {
 });
 
 exports.createNewTag = asyncHandler(async function (req, res, next) {
+  const _beacon = await Beacon.findById("639b4d0223d6e4c974c4e9eb");
+
+  const _coords = new Array();
+  const _newTriang = new Triangulation();
+
+  _newTriang.Triangulation(
+    _beacon.beaconX,
+    _beacon.beaconY,
+    req.body.distances[0],
+    req.body.distances[1],
+    req.body.distances[2]
+  );
+
+  _coords[0] =
+    _newTriang.pointXMedian() > 0
+      ? (_newTriang.pointXMedian() / _beacon.beaconX) * 100
+      : 0;
+  _coords[1] =
+    _newTriang.pointYMedian > 0
+      ? (_newTriang.pointYMedian() / _beacon.beaconY) * 100
+      : 0;
+
+  req.body.lastPosition = _coords;
   console.log(req.body);
+
   const allTags = await Tag.find();
 
   let _tagExists = false;
@@ -33,18 +59,10 @@ exports.createNewTag = asyncHandler(async function (req, res, next) {
 
   let _tag = new Object();
   if (_tagExists) {
-    _tag = await Tag.findByIdAndUpdate(_idTag, req.body, {
-      new: true,
-    });
+    _tag = await Tag.findByIdAndUpdate(_idTag, req.body);
   } else {
     _tag = await Tag.create(req.body);
   }
-
-  console.log({
-    status: "success",
-    activated: _tag.activated,
-    data: _tag,
-  });
 
   res
     .status(201)
@@ -71,11 +89,17 @@ exports.getTag = asyncHandler(async function (req, res, next) {
 });
 
 exports.updateTag = asyncHandler(async function (req, res, next) {
-  console.log(req.body);
+  // const _lastPos = req.body.lastPosition;
+
+  // const _newTriang = new Triangulation();
+  // _newTriang.Triangulation(8, 13, _lastPos[0], _lastPos[1], _lastPos[2]);
+  // const _coords = {
+  //   lastPosition: [_newTriang.pointXMedian(), _newTriang.pointYMedian()],
+  // };
+
   const _tag = await Tag.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
-  console.log(await Tag.findById(req.params.id));
 
   if (!_tag) return next(new CustomError("ID not found", 404));
 
@@ -98,6 +122,22 @@ exports.deleteTag = asyncHandler(async function (req, res, next) {
     .json({
       status: "sucess",
       data: null,
+    })
+    .end();
+});
+
+exports.setBeacons = asyncHandler(async function (req, res, next) {
+  const _beacons = await Beacon.findByIdAndUpdate(
+    "639b4d0223d6e4c974c4e9eb",
+    req.body,
+    { new: true }
+  );
+
+  res
+    .status(200)
+    .json({
+      status: "sucess",
+      data: { beacons: _beacons },
     })
     .end();
 });
